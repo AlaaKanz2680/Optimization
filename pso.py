@@ -41,10 +41,6 @@ class BestParticle:
         self.Position = np.zeros(sz)
         self.Cost = -np.inf
 
-def Grid(D):
-    grid_layout = np.zeros((N_r, N_r))
-    return grid_layout
-
 
 def Cost(N_turbines):
     c = (N_turbines * ((2. / 3) + ((1. / 3) * (np.exp((-0.00174 * ((N_turbines) ** 2)))))))
