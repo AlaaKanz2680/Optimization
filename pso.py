@@ -20,7 +20,7 @@ N_r = int(math.floor(length / (5 * D)))
 ############Algorithm Parameters##################
 N_turbines = 15
 Iterations = 500
-pop = 10
+pop = 20
 P_best_c = 1.5
 G_best_c = 1.5
 Inertia_c = 0.798
@@ -140,11 +140,11 @@ def update_particles(particle,GlobalBest, nPop, sz, Nt, W, c1, c2, VelMin, VelMa
         _, uniqueIdx = np.unique(ind, return_index=True)
 
         while len(uniqueIdx) != Nt:
-            _, uniqueIdx = np.unique(ind, return_index=True)
             duplicateIdx = np.setdiff1d(np.arange(np.prod(ind.shape)), uniqueIdx)
             ind[duplicateIdx] = ind[duplicateIdx] + np.random.randint(-1, 2, size=duplicateIdx.shape)
             ind = np.minimum(ind, sz*sz-1)
             ind = np.maximum(ind, 0)
+            _, uniqueIdx = np.unique(ind, return_index=True)
 
         particle[i].Position = np.zeros((sz, sz))
         particle[i].Position.flat[ind.astype(int)] = 1
